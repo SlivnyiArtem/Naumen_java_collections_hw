@@ -1,7 +1,8 @@
 package ru.naumen.collection.task1;
 
-import java.util.Collection;
-import java.util.List;
+import ru.naumen.collection.task1.User;
+
+import java.util.*;
 
 /**
  * Дано:
@@ -24,6 +25,14 @@ import java.util.List;
  * <p>Пользоваться можно только стандартными классами Java SE.
  * Коллекции collA, collB изменять запрещено.</p>
  *
+ * <p>Воспользуемся методом new_coll.retainAll.</p>
+ * Он позволяет за O(N*M) вернуть элементы коллекции совпадающие с другой коллекцией</p>
+ * <p>При этом M - это сложность поиска элемента другой коллекции в первой.</p>
+ * <p>Поэтому оптимальным видится использование двух HashSet, чтобы обеспечить O(M) = O(1),</p>
+ * <p>так как они получают элемент по хэшкоду</p>
+ *
+ * <p>Итого: сложность - O(N)</p>
+ *
  * См. {@link User}
  *
  * @author vpyzhyanov
@@ -35,7 +44,9 @@ public class Task1 {
      * Возвращает дубликаты пользователей, которые есть в обеих коллекциях
      */
     public static List<User> findDuplicates(Collection<User> collA, Collection<User> collB) {
-        // TODO
-        return null;
+        var collBList = new HashSet<>(collB);
+        var new_coll = new HashSet<>(collA);
+        new_coll.retainAll(collBList);
+        return new ArrayList<>(new_coll);
     }
 }
