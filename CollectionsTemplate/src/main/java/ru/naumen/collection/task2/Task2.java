@@ -1,5 +1,7 @@
 package ru.naumen.collection.task2;
 
+import java.util.HashMap;
+
 /**
  * Дано:
  * <pre>
@@ -16,13 +18,22 @@ package ru.naumen.collection.task2;
  * <p>Бармен сканирует билет и получает объект Ticket. По этому объекту нужно уметь
  * находить необходимые товары по номеру билета. И делать это нужно очень быстро,
  * ведь нужно как можно быстрее всех накормить.</p>
- * <p>
+ *
  * См. {@link Ticket}
  *
  * @author vpyzhyanov
  * @since 19.10.2023
+ *
+ * <p>Наиболее оптимальным выглядыет вариант разработать метод, принимающий на вход билет и</p>
+ * <p>HashMap коллекцию: id_билета - тип заказа, где тип заказа представлен в формате перечисления(Enum)</p>
+ * <p>В этом случае мы сможем жестко ограничить набор вариантов комбо-обеда</p>
+ * <p>и за O(1) получить по значению поля Id класса Ticket строковое представление типа комбо-обеда для выбранного билета</p>
+ * <p>Итого: O(1)</p>
+ *  @author Artem Slivnyi
+ *  @since 29.03.2023
  */
 public class Task2 {
-
-    // TODO
+    public String getFoodOrder(Ticket ticket, HashMap<Long, OrderType>ordersMap){
+        return ordersMap.get(ticket.getId()).getDesc();
+    }
 }
