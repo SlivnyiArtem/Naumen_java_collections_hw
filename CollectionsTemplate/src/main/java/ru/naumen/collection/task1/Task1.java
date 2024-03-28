@@ -1,7 +1,8 @@
 package ru.naumen.collection.task1;
 
-import java.util.Collection;
-import java.util.List;
+import ru.naumen.collection.task1.User;
+
+import java.util.*;
 
 /**
  * Дано:
@@ -35,7 +36,9 @@ public class Task1 {
      * Возвращает дубликаты пользователей, которые есть в обеих коллекциях
      */
     public static List<User> findDuplicates(Collection<User> collA, Collection<User> collB) {
-        // TODO
-        return null;
+        var collBList = new HashSet<>(collB);
+        var new_coll = new HashSet<>(collA);
+        new_coll.retainAll(collBList);
+        return new ArrayList<>(new_coll);
     }
 }
