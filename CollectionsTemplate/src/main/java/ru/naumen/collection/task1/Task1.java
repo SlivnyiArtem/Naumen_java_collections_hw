@@ -45,7 +45,7 @@ public class Task1 {
      */
     public static List<User> findDuplicates(Collection<User> collA, Collection<User> collB) {
         var collBList = new HashSet<>(collB);
-        var new_coll = new HashSet<>(collA);
+        var new_coll = new LinkedHashSet<>(collA);
         new_coll.retainAll(collBList);
         return new ArrayList<>(new_coll);
     }

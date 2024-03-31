@@ -33,7 +33,13 @@ import java.util.HashMap;
  *  @since 29.03.2023
  */
 public class Task2 {
-    public String getFoodOrder(Ticket ticket, HashMap<Long, OrderType>ordersMap){
-        return ordersMap.get(ticket.getId()).getDesc();
+    private HashMap<Long, OrderType> ordersMap;
+
+    public Task2(HashMap<Long, OrderType> ordersMap) {
+        this.ordersMap = ordersMap;
+    }
+
+    public String getFoodOrder(Ticket ticket){
+        return this.ordersMap.get(ticket.getId()).getDesc();
     }
 }
